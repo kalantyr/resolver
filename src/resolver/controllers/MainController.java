@@ -5,18 +5,53 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import resolver.Main;
+import resolver.models.MathProblem;
+import resolver.models.MathProblemInfo;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class MainController {
-//    @FXML
-//    private javafx.scene.control.MenuItem miClose;
+    @FXML
+    private javafx.scene.control.Menu miProblems;
 
     private Scene scene;
-    public void setScene(Scene scene) { this.scene = scene; }
+    public void setScene(Scene scene) {
+        this.scene = scene;
+
+        var classes = MathProblem.searchAllClasses();
+        for (var cl : classes) {
+            var an = cl.getAnnotation(MathProblemInfo.class);
+            var menuItem = new MenuItem();
+            menuItem.setText(an.name() + "...");
+            menuItem.setUserData(cl);
+            menuItem.setOnAction(actionEvent -> {
+                try {
+                    var mi = (MenuItem)actionEvent.getSource();
+                    var c = (Class<MathProblem>)mi.getUserData();
+                    showMathProblem(c);
+                } catch (Exception e) {
+                    Main.showError(e);
+                }
+            });
+            miProblems.getItems().add(menuItem);
+        }
+    }
+
+    private void showMathProblem(Class<MathProblem> cl) throws IOException {
+        var an = cl.getAnnotation(MathProblemInfo.class);
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../fxml/MathProblemWindow.fxml")));
+        var stage = new Stage();
+        stage.initOwner(scene.getWindow());
+        stage.setTitle(an.name());
+        stage.setScene(new Scene(root, 480, 360));
+        stage.show();
+    }
 
     @FXML
     public void onExit(Event e) {

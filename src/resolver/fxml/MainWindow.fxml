@@ -10,18 +10,20 @@
    <children>
       <MenuBar>
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="Файл">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#onExit" text="Exit">
+              <MenuItem mnemonicParsing="false" onAction="#onExit" text="Выход">
                      <accelerator>
                         <KeyCodeCombination alt="DOWN" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu fx:id="miProblems" mnemonicParsing="false" text="Задачи">
+          </Menu>
+          <Menu mnemonicParsing="false" text="Помощь">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#onAbout" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#onAbout" text="О программе" />
             </items>
           </Menu>
         </menus>

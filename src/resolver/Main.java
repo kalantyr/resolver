@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import resolver.controllers.MainController;
 
@@ -24,8 +25,13 @@ public class Main extends Application {
         controller.setScene(primaryStage.getScene());
     }
 
-
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static void showError(Exception exc) {
+//        var alert = new Alert(Alert.AlertType.ERROR, String.join(", ", exc.getMessage()));
+        var alert = new Alert(Alert.AlertType.ERROR, exc.getMessage());
+        alert.showAndWait();
     }
 }
