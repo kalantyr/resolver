@@ -43,14 +43,16 @@ public class MainController {
     }
 
     private void showMathProblem(Class<MathProblem> cl) throws IOException {
-        var an = cl.getAnnotation(MathProblemInfo.class);
+        var loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../fxml/MathProblemWindow.fxml")));
+        var root = (Parent)loader.load();
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../fxml/MathProblemWindow.fxml")));
         var stage = new Stage();
         stage.initOwner(scene.getWindow());
-        stage.setTitle(an.name());
         stage.setScene(new Scene(root, 480, 360));
         stage.show();
+
+        var controller = loader.<MathProblemController>getController();
+        controller.init(stage, cl);
     }
 
     @FXML
