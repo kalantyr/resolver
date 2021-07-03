@@ -48,7 +48,7 @@ public class MainController {
 
         var stage = new Stage();
         stage.initOwner(scene.getWindow());
-        stage.setScene(new Scene(root, 480, 360));
+        stage.setScene(new Scene(root, 480, 160));
         stage.show();
 
         var controller = loader.<MathProblemController>getController();
