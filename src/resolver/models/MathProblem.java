@@ -1,5 +1,7 @@
 package resolver.models;
 
+import java.util.Map;
+
 public abstract class MathProblem {
     /**
      * Ищет все неабстрактные классы-наследники {@link MathProblem}
@@ -12,5 +14,5 @@ public abstract class MathProblem {
         };
     }
 
-    public abstract void calculate();
+    public abstract Map<String,Object> calculate(Map<String,Object> inputData);
 }
