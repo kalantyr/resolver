@@ -7,6 +7,8 @@ import resolver.Main;
 import resolver.models.MathProblem;
 import resolver.models.MathProblemInfo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class MathProblemController {
@@ -30,12 +32,22 @@ public class MathProblemController {
         }
     }
 
-    public static Map<String,Object> parse(String text){
-        throw new RuntimeException("Не реализовано");
+    public static Map<String,String> parse(String text){
+        var lines = text.split("\n");
+        var result = new HashMap<String,String>();
+        for (var line:lines) {
+            var parts = line.split("=");
+            result.put(parts[0], parts[1]);
+        }
+        return result;
     }
 
-    public static String toString(Map<String,Object> data){
-        throw new RuntimeException("Не реализовано");
+    public static String toString(Map<String,String> data){
+        var list = new ArrayList<String>();
+        for (var key:data.keySet()) {
+            list.add(key+" = "+data.get(key));
+        }
+        return String.join("\n",list);
     }
 
     @FXML

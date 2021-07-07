@@ -15,5 +15,13 @@ public abstract class MathProblem {
         };
     }
 
-    public abstract Map<String,Object> calculate(Map<String,Object> inputData);
+    public static double getValue(Map<String,String> inputData,String keyName, double defaultValue){
+        var v = inputData.get(keyName);
+        if (v==null)
+            return defaultValue;
+        else
+            return Double.parseDouble(v);
+    }
+
+    public abstract Map<String,String> calculate(Map<String,String> inputData);
 }
