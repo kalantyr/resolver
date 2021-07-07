@@ -16,20 +16,20 @@ public class KvUr_Tests {
     public void calculate_test(Double a, Double b, Double c, Double x1, Double x2){
         var kvur = new KvUr();
 
-        var inputData = new HashMap<String,Object>();
+        var inputData = new HashMap<String,String>();
         if (a!=null)
-            inputData.put("a",a);
+            inputData.put("a", String.valueOf(a.doubleValue()));
         if (b!=null)
-            inputData.put("b",b);
+            inputData.put("b", String.valueOf(b.doubleValue()));
         if (c!=null)
-            inputData.put("c",c);
+            inputData.put("c", String.valueOf(c.doubleValue()));
         var k = kvur.calculate(inputData);
 
-        var map = new HashMap<String,Object>();
+        var map = new HashMap<String, String>();
         if (x1!=null)
-            map.put("x1",x1);
+            map.put("x1", String.valueOf(x1.doubleValue()));
         if (x2!=null)
-            map.put("x2",x2);
+            map.put("x2", String.valueOf(x2.doubleValue()));
         Assertions.assertEquals(map, k);
     }
 
