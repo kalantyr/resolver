@@ -10,7 +10,8 @@ public abstract class MathProblem {
         // TODO: replace with reflection
         return new Class[]{
                 Sum.class,
-                Mult.class
+                Mult.class,
+                KvUr.class
         };
     }
 
