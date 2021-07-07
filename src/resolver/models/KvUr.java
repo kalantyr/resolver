@@ -11,18 +11,18 @@ public class KvUr extends MathProblem {
 
         var a = inputData.get("a");
         if (a==null)
-            a=0;
-        var a1=(int)a;
+            a=0.0;
+        var a1=(double)a;
 
         var b = inputData.get("b");
         if (b==null)
-            b=0;
-        var b1=(int)b;
+            b=0.0;
+        var b1=(double)b;
 
         var c = inputData.get("c");
         if (c==null)
-            c=0;
-        var c1=(int)c;
+            c=0.0;
+        var c1=(double)c;
 
         var d = b1*b1-4*a1*c1;
         var k=0;
