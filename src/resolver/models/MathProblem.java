@@ -10,8 +10,12 @@ public abstract class MathProblem {
         // TODO: replace with reflection
         return new Class[]{
                 Sum.class,
+                Diff.class,
                 Mult.class,
-                KvUr.class
+                Pow.class,
+                KvUr.class,
+                Perc.class,
+                Hypo.class
         };
     }
 
@@ -19,6 +23,14 @@ public abstract class MathProblem {
         var v = inputData.get(keyName);
         if (v==null)
             return defaultValue;
+        else
+            return Double.parseDouble(v);
+    }
+
+    public static double getValueOrThrow(Map<String,String> inputData,String keyName, String error) {
+        var v = inputData.get(keyName);
+        if (v==null)
+            throw new RuntimeException(error);
         else
             return Double.parseDouble(v);
     }
