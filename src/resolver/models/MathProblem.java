@@ -15,7 +15,8 @@ public abstract class MathProblem {
                 Pow.class,
                 KvUr.class,
                 Perc.class,
-                Hypo.class
+                Hypo.class,
+                Pri.class
         };
     }
 
