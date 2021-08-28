@@ -18,6 +18,8 @@ public abstract class MathProblem {
                 Hypo.class,
                 Pri.class,
                 Comb.class,
+                Mas.class,
+                Bin.class
         };
     }
 
