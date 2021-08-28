@@ -13,13 +13,13 @@ import java.util.stream.Stream;
 public class Bin_Tests {
     @ParameterizedTest
     @MethodSource("testData")
-    public void calculate_test(Double d, Double b){
+    public void calculate_test(Integer d, Integer b){
         var inputData = new HashMap<String,String>();
         if (d!=null)
-            inputData.put("d", String.valueOf(d.doubleValue()));
+            inputData.put("d", String.valueOf(d.intValue()));
         var map = new HashMap<String,String>();
         if (b!=null)
-            map.put("b", String.valueOf(b.doubleValue()));
+            map.put("b", String.valueOf(b.intValue()));
         var bin =  new Bin();
         var result = bin.calculate(inputData);
         Assertions.assertEquals(map, result);
@@ -30,7 +30,9 @@ public class Bin_Tests {
                 Arguments.of(5, 101),
                 Arguments.of(124, 1111100),
                 Arguments.of(39, 100111),
-                Arguments.of(506, 111111010)
+                Arguments.of(506, 111111010),
+                Arguments.of(0, 0),
+                Arguments.of(1, 1)
         );
     }
 }
